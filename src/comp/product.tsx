@@ -2,11 +2,11 @@ import React from "react";
 import Link from "next/link";
 /* eslint-disable @next/next/no-img-element */
 
-export default function ProductItem({product}:{product:any}): JSX.Element {
+export default function ProductItem({product}:{product:any}) {
     return (
         <>
             <div className="mb-5 block rounded-lg border border-gray-200 shadow-md">
-                <Link legacyBehavior href={'/product/${product.slug}'}>
+                <Link legacyBehavior href={`/product/${product.slug}`}>
                     <a>
                         <img
                             src={product.image}
@@ -16,7 +16,7 @@ export default function ProductItem({product}:{product:any}): JSX.Element {
                     </a>
                 </Link>
                 <div className="flex flex-col item-center text-center justify-center p-5">
-                    <Link legacyBehavior href={'/product/${product.slug}'}>
+                    <Link legacyBehavior href={`/product/${product.slug}`}>
                         <a>
                             <h2 className="text-xl font-bold">
                                 {product.name}
