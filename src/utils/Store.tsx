@@ -1,6 +1,7 @@
 import {createContext, useReducer } from "react";
 
-export const Store= createContext<undefined>(undefined);
+
+export const Store= createContext<any>([]);
 
 const initialState={
     cart: {cartItems:[]},
@@ -18,6 +19,13 @@ function reducer(state: any,action: any){
             : [...state.cart.cartItems, newItem];
         return {...state, cart: {...state.cart,cartItems}}
                 
+        }
+
+        case "CART_REMOVE_ITEM":{
+            const cartItems = state.cart.cartItems.filter(
+                (item: any) => item.slug !== action.payload.slug
+            )
+            return  {...state, cart: {...state.cart, cartItems}};
         }
         default: return state;
     }

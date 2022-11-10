@@ -5,11 +5,12 @@ import data from "../../utils/data";
 import Link from "next/link";
 import Image from "next/image";
 import { Store } from "../../utils/Store";
-import { any } from "zod";
+import { router } from "../../server/trpc/trpc";
+
 
 export default function productScreen() {
     const { state, dispatch } = useContext(Store) as any;
-  
+    const router = useRouter();
  
     const {query} = useRouter();
     const {slug} = query;
@@ -36,6 +37,7 @@ export default function productScreen() {
            return;
         }
         dispatch ({type: "CART_ADD_ITEM", payload: {...product, quantity}})
+        router.push("/cart");
     }
 
     return (
@@ -65,7 +67,7 @@ export default function productScreen() {
                     <li>Description: {product.description}</li>
                 </div>
                 <div>
-                    <div className="card p-5">
+                    <div className="nline-block bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                         <div className="mb-2 flex justify-between">
                             <div>Price: ${product.price}</div>
                         </div>
