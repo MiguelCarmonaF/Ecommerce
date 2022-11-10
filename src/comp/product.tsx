@@ -23,7 +23,7 @@ export default function ProductItem({product}:{product:any}) {
                             </h2>
                         </a>
                     </Link>
-                    <p className="mb-2 text-red-500 card p-5">{product.brand}</p>
+                    <p className="mb-2 text-red-500">{product.brand}</p>
                     <p>${product.price}</p>
                     <button className="rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500" type="button">
                         Add to cart
