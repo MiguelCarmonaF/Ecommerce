@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 
 
-export default function Layout({children}:{children:any}) {
+export default function Layout({children}:{children:any}): JSX.Element {
     return (
         <>
 
