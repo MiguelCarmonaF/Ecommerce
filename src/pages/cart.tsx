@@ -3,7 +3,6 @@ import React, { useContext } from "react"
 import Layout from "../comp/layout";
 import { Store } from "../utils/Store"
 import Image from "next/image";
-import { XcircleIcon } from  '@heroicons/react/solid';
 import router from "next/router";
 
 export default function cartScreen (){
@@ -38,7 +37,7 @@ export default function cartScreen (){
                                 </thead>
                                 <tbody>
                                     {cartItems.map((item: any)=>(
-                                        <tr key={item.slug} className="border-nb">
+                                        <tr key={item} className="border-nb">
                                             <td>
                                                 <Link href={`/product/${item.slug}`}>
                                                     <a className="flex items-center">
@@ -65,7 +64,9 @@ export default function cartScreen (){
                                             <td className="p-5 text-right">${item.price}</td>
                                             <td className="p-5 text-right">{item.quantity}</td>
                                             <button onClick={()=>removeItemHandler(item)}>
-                                                <XcircleIcon className="h-5 w-5"></XcircleIcon>
+                                                <img className="h-5 w-5"  
+                                                    src="../images/Xricrle.png"
+                                                />
                                             </button>
                                         </tr>
                                     ))}
@@ -95,3 +96,4 @@ export default function cartScreen (){
         </Layout>
     )
 }
+

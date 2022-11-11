@@ -1,10 +1,13 @@
 import {createContext, useReducer } from "react";
+import { Cookies } from "typescript-cookie";
+import { stripVTControlCharacters } from "util";
 
 
 export const Store= createContext<any>([]);
 
 const initialState={
-    cart: {cartItems:[]},
+    cart: Cookies.get('cart') ? JSON.parse(Cookies.get('cart')):
+    {cartItems:[]},
 };
 
 function reducer(state: any,action: any){
@@ -17,7 +20,8 @@ function reducer(state: any,action: any){
             const cartItems = existItem ? state.cart.cartItems.map((item: any)=>
             item.name===existItem.name ? newItem: item)
             : [...state.cart.cartItems, newItem];
-        return {...state, cart: {...state.cart,cartItems}}
+            Cookies.set("cart",JSON.stringify({...state.cart,cartItems}))
+            return {...state, cart: {...state.cart,cartItems}}
                 
         }
 
@@ -25,6 +29,7 @@ function reducer(state: any,action: any){
             const cartItems = state.cart.cartItems.filter(
                 (item: any) => item.slug !== action.payload.slug
             )
+            Cookies.set("cart",JSON.stringify({...state.cart,cartItems}))
             return  {...state, cart: {...state.cart, cartItems}};
         }
         default: return state;
