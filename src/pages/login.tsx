@@ -24,6 +24,8 @@ export default function LogInScreen() {
         }
    })
     
+
+
     return (
        <>
            {modalOpen && <ProductModal setModalOpen={setModalOpen} setItems={function (value: React.SetStateAction<userSchema[]>): void {
@@ -46,7 +48,7 @@ export default function LogInScreen() {
                         {errors.email && <div className="text-red-500">{errors.email.message}</div> }
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="password">Email</label>
+                        <label htmlFor="password">Contraseña</label>
                         <input 
                             {...register("password",{required: "Please enter password", minLength:{value: 6,
                             message: "Passowrd is more than 5 chars"}})}

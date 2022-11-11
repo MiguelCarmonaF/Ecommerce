@@ -15,12 +15,17 @@ datasource db {
 model product {
   id        String   @id @default(cuid())
   name String
-  slug String
-  inventory Int 
-  price Decimal
+  slug String @unique
+  category String
+  image String
+  price Float
+  brand String
+  rating Float
+  numReviews Int
+  countInStock Int
+  description String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  @@unique([id,name,slug,inventory,price])
 }
 
 model userSchema {

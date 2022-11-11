@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Store } from "../../utils/Store";
 import { router } from "../../server/trpc/trpc";
+import { trpc } from "../../utils/trpc";
 
 
 export default function productScreen() {
@@ -15,7 +16,8 @@ export default function productScreen() {
     const {query} = useRouter();
     const {slug} = query;
     const product = data.products.find(x => x.slug === slug)
-
+    
+    const { data: productData, isLoading} = trpc.product.getAllProducts.useQuery()
     
     if(!product){
         return <div>

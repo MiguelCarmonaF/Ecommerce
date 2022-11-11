@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Store } from "../utils/Store";
+import { Menu } from "@headlessui/react"
 
 
 export default function Layout({title, children}:{children:any, title:any}) {

@@ -18,7 +18,7 @@ export const productRouter = router({
 
 
     getAllProducts:  publicProcedure.query(async({ctx}) => {
-        const product = await ctx.prisma.userSchema.findMany()
+        const product = await ctx.prisma.product.findMany()
         return product
     }),
 
