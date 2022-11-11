@@ -22,3 +22,12 @@ model product {
   updatedAt DateTime @updatedAt
   @@unique([id,name,slug,inventory,price])
 }
+
+model userSchema {
+  name String
+  email String @unique
+  password String
+  isAdmin Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

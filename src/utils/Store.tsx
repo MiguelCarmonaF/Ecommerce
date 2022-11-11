@@ -6,7 +6,7 @@ import { stripVTControlCharacters } from "util";
 export const Store= createContext<any>([]);
 
 const initialState={
-    cart: Cookies.get('cart') ? JSON.parse(Cookies.get('cart')):
+    cart: //Cookies.get('cart') ? JSON.parse(Cookies.get('cart')):
     {cartItems:[]},
 };
 

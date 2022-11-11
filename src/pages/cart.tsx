@@ -84,7 +84,7 @@ export default function cartScreen (){
                                     </div>
                                 </li>
                                 <li>
-                                    <button onClick={() => router.push("/shipping")} className="rounded bg-amber-300 w-full py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500" type="button">
+                                    <button onClick={() => router.push("login?redirect=/shipping")} className="rounded bg-amber-300 w-full py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500" type="button">
                                         Check Out
                                     </button>
                                 </li>
