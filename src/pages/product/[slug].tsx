@@ -3,24 +3,18 @@ import Layout from "../../comp/layout"
 import Link from "next/link";
 import Image from "next/image";
 import { Store } from "../../utils/Store";
-import { trpc } from "../../utils/trpc";
-import { product } from "@prisma/client";
+import { useRouter } from "next/router";
+import data from "../../utils/data"
 
 
 
 
-export default function productScreen() {
-    const { state, dispatch } = useContext(Store) as any;
+export default function productScreen() {  
+    const {state, dispatch} = useContext(Store)
+    const {query} = useRouter()
+    const {slug} = query;
+    const product = data.products.find((x)=>x.slug===slug) as any;
     
-    const [items, setItems] = useState<product[]>([])
-      
-    
-    const product = trpc.product.findItem.useQuery({
-        (product: { slug: string; }){
-          setItems((prev) => prev.filter((item) => item.slug ==product.slug))
-        }
-      })
-
     const addToCartHandler=() => {
         const existItem = state.cart.cartItems.find((x: any) => x.slug === product.slug);
         const quantity: any = existItem ? existItem.quantity + 1 : 1;
@@ -74,5 +68,9 @@ export default function productScreen() {
             </div>
         </Layout>
     )
+}
+
+function dispatch(arg0: { type: string; payload: { quantity: any; name?: string | undefined; slug?: string | undefined; category?: string | undefined; image?: string | undefined; price?: number | undefined; brand?: string | undefined; rating?: number | undefined; numReviews?: number | undefined; countInStock?: number | undefined; description?: string | undefined; }; }) {
+    throw new Error("Function not implemented.");
 }
 
